@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import NoteForm from './NoteForm'
+import {RiCloseCircleLine} from 'react-icons/ri'
+import {TiEdit} from 'react-icons/ti'
 
-function Note() {
+function Note({lists, completeList, removeList}) {
 
     const[edit,setEdit] = useState({
         id:null,
@@ -18,6 +20,12 @@ function Note() {
         </div>
         
         <div className = "icons">
+            <RiCloseCircleLine 
+            onClick={() => removeList(list.id)}
+            className='delete-icon'/>
+            <TiEdit onClick={() => setEdit({id: list.id, value: list.text})}
+            className='edit-icon'
+            />
             
             </div>        
 

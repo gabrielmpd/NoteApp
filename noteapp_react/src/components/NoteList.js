@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
-import NoteForm from './NoteForm'
+import React, {useState} from 'react';
+import NoteForm from './NoteForm';
+import Note from './Note';
 
 function NoteList() {
     const[lists, setLists] = useState([]);
@@ -14,10 +15,29 @@ function NoteList() {
     
     }
 
+    const removeList = id =>{
+        const removeArr = [...lists].filter(list => list.id !== id);
+        setLists(removeArr);
+    }
+
+
+    const completeList = id => {
+        let updateLists = lists.map(list=>{
+            if(list.id ===id){
+                list.isComplete = !list.isComplete;
+            }
+           return list; 
+        })
+        setLists(updateLists);
+    }
+
     return (
         <div>
             <h1>Start here your notes</h1>
             <NoteForm onSubmit={addlist}/>
+            <Note 
+            lists = {lists} completeList = {completeList}
+            removeList={removeList}/>
         </div>
     );
 }
