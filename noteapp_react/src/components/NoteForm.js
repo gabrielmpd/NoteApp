@@ -1,8 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 function NoteForm(props) {
 
     const[input, setInput] = useState('');
+
+    const inputRef = useRef(null)
+
+    useEffect(() => {
+        inputRef.current.focus()
+    })
 
     const handleChange = e => {
         setInput(e.target.value);
@@ -27,6 +33,7 @@ function NoteForm(props) {
         name = 'text'
         className = 'list-input'
         onChange = {handleChange}
+        ref={inputRef}
         />
         <button className='list-button'>Add to Notes</button>
         </form>

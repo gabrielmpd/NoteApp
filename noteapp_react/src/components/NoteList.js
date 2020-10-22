@@ -15,6 +15,15 @@ function NoteList() {
     
     }
 
+
+    const updateList = (listId, newValue) => {
+        if(!newValue.text || /^\s*$/.test('newValue.text')) { //regex para espacos vazios
+            return;
+        }
+
+        setLists(prev => prev.map(item => (item.id === listId ? newValue : item )))
+    }
+
     const removeList = id =>{
         const removeArr = [...lists].filter(list => list.id !== id);
         setLists(removeArr);
@@ -37,7 +46,9 @@ function NoteList() {
             <NoteForm onSubmit={addlist}/>
             <Note 
             lists = {lists} completeList = {completeList}
-            removeList={removeList}/>
+            removeList={removeList}
+            updateList={updateList}
+            />
         </div>
     );
 }

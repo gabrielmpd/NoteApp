@@ -3,12 +3,25 @@ import NoteForm from './NoteForm'
 import {RiCloseCircleLine} from 'react-icons/ri'
 import {TiEdit} from 'react-icons/ti'
 
-function Note({lists, completeList, removeList}) {
+function Note({lists, completeList, removeList, updateList}) {
 
     const[edit,setEdit] = useState({
         id:null,
         value: ''
     })
+
+    const submitUpdate = value => {
+        updateList(edit.id, value)
+        setEdit({
+            id: null,
+            value: ''
+
+        })
+    }
+
+    if (edit.id) {
+        return <NoteForm edit={edit} onSubmit={submitUpdate} />
+    }
 
     return lists.map((list, index) => (
         <div className={list.isComplete ? 'list complete' :
