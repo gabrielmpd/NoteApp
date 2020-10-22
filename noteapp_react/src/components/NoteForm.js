@@ -1,16 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 
-function NoteForm() {
+function NoteForm(props) {
 
-    const[input, setInput] = useState('')
+    const[input, setInput] = useState('');
+
+    const handleChange = e => {
+        setInput(e.target.value);
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+
+     setInput ('');   
+
+        props.onSubmit({
+            id:Math.floor(Math.random()*10000),
+            text: input
+        });
+    };
 
     return (
-        <form className ="form-list">
-        <input type="text"
-        placeholder = "Add a Note" 
+        <form className ='form-list' on onSubmit={handleSubmit}>
+        <input type='text'
+        placeholder = 'Add a Note' 
         value = {input}
         name = 'text'
-        className = 'form-list'
+        className = 'list-input'
+        onChange = {handleChange}
         />
         <button className='list-button'>Add to Notes</button>
         </form>
