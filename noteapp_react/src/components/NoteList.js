@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import NoteForm from './NoteForm';
 import Note from './Note';
 
+
 function NoteList() {
     const[lists, setLists] = useState([]);
 
@@ -9,7 +10,7 @@ function NoteList() {
         if(!list.text || /^\s*$/.test('list.text')) { //regex para espacos vazios
           return  
         }
-    const newLists = [list, ...lists]
+    const newLists = [list,...lists]
     
     setLists(newLists)
     
@@ -40,9 +41,10 @@ function NoteList() {
         setLists(updateLists);
     }
 
+
     return (
         <div>
-            <h1>Start here your notes</h1>
+            <h1>Start here your notes </h1>
             <NoteForm onSubmit={addlist}/>
             <Note 
             lists = {lists} completeList = {completeList}

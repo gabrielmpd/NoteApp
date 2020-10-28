@@ -25,6 +25,8 @@ function NoteForm(props) {
         });
     };
 
+ 
+
     return (
         <form className ='form-list' on onSubmit={handleSubmit}>
         <input type='text'

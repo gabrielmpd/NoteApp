@@ -3,6 +3,21 @@ import NoteForm from './NoteForm'
 import {RiCloseCircleLine} from 'react-icons/ri'
 import {TiEdit} from 'react-icons/ti'
 
+
+function formataData(data = new Date()){
+    var dia = data.getDate();
+    var mes = data.getMonth()+1;
+    var ano = data.getFullYear();
+
+    if (dia.toString().length == 1) dia = '0'+dia;
+    if (mes.toString().length == 1) mes = '0'+mes;
+
+    var datas = '   - '+dia+'/'+mes
+
+    return datas
+}
+
+
 function Note({lists, completeList, removeList, updateList}) {
 
     const[edit,setEdit] = useState({
@@ -18,7 +33,7 @@ function Note({lists, completeList, removeList, updateList}) {
 
         })
     }
-
+    
     if (edit.id) {
         return <NoteForm edit={edit} onSubmit={submitUpdate} />
     }
@@ -29,7 +44,7 @@ function Note({lists, completeList, removeList, updateList}) {
     >
 
         <div key = {list.id} onClick={() => completeList(list.id)}>
-        {list.text}
+        {list.text + formataData()}
         </div>
         
         <div className = "icons">
