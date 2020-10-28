@@ -7,10 +7,10 @@ import {TiEdit} from 'react-icons/ti'
 function formataData(data = new Date()){
     var dia = data.getDate();
     var mes = data.getMonth()+1;
-    var ano = data.getFullYear();
+    //var ano = data.getFullYear();
 
-    if (dia.toString().length == 1) dia = '0'+dia;
-    if (mes.toString().length == 1) mes = '0'+mes;
+    if (dia.toString().length === 1) dia = '0'+dia;
+    if (mes.toString().length === 1) mes = '0'+mes;
 
     var datas = '   - '+dia+'/'+mes
 
@@ -33,6 +33,10 @@ function Note({lists, completeList, removeList, updateList}) {
 
         })
     }
+
+    localStorage.setItem('@note-app/notas', submitUpdate)
+    localStorage.getItem('@note-app/notas')
+
     
     if (edit.id) {
         return <NoteForm edit={edit} onSubmit={submitUpdate} />
@@ -41,7 +45,7 @@ function Note({lists, completeList, removeList, updateList}) {
     return lists.map((list, index) => (
         <div className={list.isComplete ? 'list complete' :
     'list-row'} key={index}
-    >
+    >   
 
         <div key = {list.id} onClick={() => completeList(list.id)}>
         {list.text + formataData()}
@@ -60,6 +64,8 @@ function Note({lists, completeList, removeList, updateList}) {
 
         </div>
     ))
+
+    
         
 }
 

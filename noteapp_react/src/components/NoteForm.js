@@ -23,6 +23,7 @@ function NoteForm(props) {
             id:Math.floor(Math.random()*10000),
             text: input
         });
+        
     };
 
  

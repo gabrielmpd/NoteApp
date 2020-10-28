@@ -4,8 +4,10 @@ import Note from './Note';
 
 
 function NoteList() {
-    const[lists, setLists] = useState([]);
-
+    const[lists, setLists] = useState((localStorage.getItem('list-note') != null || localStorage.getItem('list-note') != undefined) ? JSON.parse(localStorage.getItem('list-note')) : []
+    );
+    
+    
     const addlist = list => {
         if(!list.text || /^\s*$/.test('list.text')) { //regex para espacos vazios
           return  
@@ -13,6 +15,9 @@ function NoteList() {
     const newLists = [list,...lists]
     
     setLists(newLists)
+
+    localStorage.setItem('list-note', JSON.stringify(newLists))
+    
     
     }
 
