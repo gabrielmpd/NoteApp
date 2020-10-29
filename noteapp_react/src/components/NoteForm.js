@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown';
 
 function NoteForm(props) {
 
+    
+
     const[input, setInput] = useState('');
 
     const inputRef = useRef(null)
@@ -41,11 +43,13 @@ function NoteForm(props) {
         />
         <button className='list-button'>Add to Notes</button>
         <ReactMarkdown source={input} className="form-list"/>
+        
         </form>
 
-
+    
         
     );
+
 
 }
 

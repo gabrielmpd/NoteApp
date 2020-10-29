@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import NoteForm from './NoteForm';
 import Note from './Note';
+import ReactMarkdown from 'react-markdown';
 
 
 function NoteList() {
@@ -19,6 +20,7 @@ function NoteList() {
     localStorage.setItem('list-note', JSON.stringify(newLists))
     
     
+    
     }
 
 
@@ -28,6 +30,8 @@ function NoteList() {
         }
 
         setLists(prev => prev.map(item => (item.id === listId ? newValue : item )))
+
+        
     }
 
     const removeList = id =>{
