@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
+import ReactMarkdown from 'react-markdown';
 
 function NoteForm(props) {
 
@@ -39,6 +40,7 @@ function NoteForm(props) {
         ref={inputRef}
         />
         <button className='list-button'>Add to Notes</button>
+        <ReactMarkdown source={input} className="form-list"/>
         </form>
 
 

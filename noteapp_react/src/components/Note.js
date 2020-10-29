@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import NoteForm from './NoteForm'
 import {RiCloseCircleLine} from 'react-icons/ri'
 import {TiEdit} from 'react-icons/ti'
+import ReactMarkdown from 'react-markdown'
 
 
 function formataData(data = new Date()){
@@ -33,9 +34,6 @@ function Note({lists, completeList, removeList, updateList}) {
 
         })
     }
-
-    localStorage.setItem('@note-app/notas', submitUpdate)
-    localStorage.getItem('@note-app/notas')
 
     
     if (edit.id) {
